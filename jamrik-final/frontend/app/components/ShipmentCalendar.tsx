@@ -4,7 +4,6 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import arLocale from '@fullcalendar/core/locales/ar';
-import enLocale from '@fullcalendar/core/locales/en-gb'; // Or just use default for English
 import { LanguageContext } from './LanguageContext';
 import "./ShipmentCalendar.css";
 
@@ -30,14 +29,12 @@ const ShipmentCalendar = () => {
     localStorage.setItem("jamrik_calendar", JSON.stringify(events));
   }, [events]);
 
-  // NEW: When clicking a blank day (Create)
   const handleDateClick = (arg: any) => {
-    setSelectedEventId(null); // Ensure we aren't in edit mode
+    setSelectedEventId(null); 
     setNewNote({ title: '', description: '', start: arg.dateStr, end: arg.dateStr });
     setIsModalOpen(true);
   };
 
-  // NEW: When clicking an existing note (View/Delete)
   const handleEventClick = (clickInfo: any) => {
     setSelectedEventId(clickInfo.event.id);
     setNewNote({
@@ -115,7 +112,6 @@ const ShipmentCalendar = () => {
             <div className="modal-buttons">
               <button className="btn-cancel" onClick={() => setIsModalOpen(false)}>{t("Close")}</button>
               
-              {/* Show DELETE and UPDATE if editing, show SAVE if creating */}
               {selectedEventId ? (
                 <>
                   <button className="btn-delete" onClick={handleDeleteNote} style={{marginRight: "8px"}}>{t("Remove Note")}</button>

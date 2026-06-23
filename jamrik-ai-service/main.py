@@ -26,6 +26,9 @@ API_KEYS = [
     os.getenv("GEMINI_API_KEY_5"),
     os.getenv("GEMINI_API_KEY_6"),
     os.getenv("GEMINI_API_KEY_7"),
+    os.getenv("GEMINI_API_KEY_8"),
+    os.getenv("GEMINI_API_KEY_9"),
+    os.getenv("GEMINI_API_KEY_10"),
 ]
 VALID_KEYS = [key for key in API_KEYS if key]
 key_pool = itertools.cycle(VALID_KEYS) if VALID_KEYS else None

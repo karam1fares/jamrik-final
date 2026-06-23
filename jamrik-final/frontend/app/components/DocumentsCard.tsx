@@ -27,7 +27,6 @@ const DocumentsCard = ({ DocumentIcon, DocumentName, DocumentDesc, clickFun, fil
                style={{ cursor: fileCount >= 2 ? "not-allowed" : "pointer", opacity: fileCount >= 2 ? 0.5 : 1 }} 
                onClick={fileCount < 2 ? clickFun : undefined}
            >
-            {/* Show count to the user so they know they can upload up to 2 */}
             <p>{fileCount >= 2 ? "Max Reached" : "Upload"} ({fileCount}/2)</p>
             <div>
                 <Image src="/icons/Upload.png" alt="upload icon" width={24} height={24}/>

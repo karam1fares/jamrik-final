@@ -96,12 +96,10 @@ export default function CurrencyConverter() {
   const [baseAmount, setBaseAmount] = useState<string>("1");
   const [targetAmount, setTargetAmount] = useState<string>("1.41");
 
-  // Helper function to get the numeric conversion factor relative to JOD
   const getFactor = (code: string) => {
     return CURRENCY_REGISTRY.find((c) => c.code === code)?.factor || 1;
   };
 
-  // Helper function to get the clean name string
   const getName = (code: string) => {
     return CURRENCY_REGISTRY.find((c) => c.code === code)?.name || "";
   };
@@ -123,7 +121,6 @@ export default function CurrencyConverter() {
     setTargetAmount(targetCurrency === "JOD" ? result.toFixed(3) : result.toFixed(2));
   };
 
-  // Handler for modifying the Bottom (Target) Input field
   const handleTargetChange = (val: string) => {
     setTargetAmount(val);
     const numericValue = parseFloat(val);
@@ -135,12 +132,10 @@ export default function CurrencyConverter() {
     const baseFactor = getFactor(baseCurrency);
     const targetFactor = getFactor(targetCurrency);
 
-    // Convert Target Amount back to JOD, then convert JOD to Base Amount
     const result = (numericValue / targetFactor) * baseFactor;
     setBaseAmount(baseCurrency === "JOD" ? result.toFixed(3) : result.toFixed(2));
   };
 
-  // Recalculate values smoothly whenever dropdown selections change
   useEffect(() => {
     handleBaseChange(baseAmount);
   }, [baseCurrency, targetCurrency]);
@@ -160,7 +155,6 @@ export default function CurrencyConverter() {
       </div>
 
       <div className="currency-converter-blocks">
-        {/* TOP BLOCK (Base Input & Dropdown) */}
         <div className="currency-input-group">
           <input
             type="number"
@@ -185,7 +179,6 @@ export default function CurrencyConverter() {
           </select>
         </div>
 
-        {/* BOTTOM BLOCK (Target Input & Dropdown) */}
         <div className="currency-input-group">
           <input
             type="number"
